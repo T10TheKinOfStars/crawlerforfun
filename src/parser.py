@@ -8,7 +8,10 @@ from pyquery import PyQuery
 def getResTb():
     html = fileworker.getHTML()
     pq = PyQuery(html)
-    tag = pq(".summary")
-    fileworker.writeTest(tag)
+    result = dict()
+    blocks = list()
+    for i in pq.items('.row.result'):
+        list.append(i)
+    #scan blocks to store related companys into result dictionary
 
 getResTb()
