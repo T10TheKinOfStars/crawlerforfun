@@ -16,7 +16,7 @@ def MkNewDir(newDir=None):
 	else:
 		newDirCreated = "./" + newDir
 	os.mkdir(newDirCreated)
-	return newDirCreated
+	return newDir
 
 def graspurl(targetUrl, targetDir=None):
 	ck = cookielib.LWPCookieJar()
@@ -26,12 +26,13 @@ def graspurl(targetUrl, targetDir=None):
 	req = urllib2.Request(targetUrl)
 	operate = opener.open(req)
 	msg = operate.read()
+	
 
 	if targetDir and os.path.isdir("./"+targetDir):
 		print(targetDir," Exists already ")
 		fullpath = os.getcwd() + "/" + targetDir
 	else:
-		fullpath = os.getcwd() + MkNewDir(targetDir)
+		fullpath = os.getcwd() + "/" + MkNewDir(targetDir)
 
 	filename = targetUrl.replace('/','_')
 	filename = filename.replace(':','.')
